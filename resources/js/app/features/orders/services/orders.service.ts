@@ -33,7 +33,7 @@ export const ordersService = {
   },
 
   async getServices(): Promise<OrderService[]> {
-    const { data } = await api.get<ApiListResponse<OrderService>>('/api/services');
+    const { data } = await api.get<ApiListResponse<OrderService>>('/api/services/options');
 
     return data.data;
   },

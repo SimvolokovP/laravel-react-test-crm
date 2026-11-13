@@ -24,6 +24,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::put('/clients/{client}', [ClientController::class, 'update']);
 
     Route::get('/services', [ServiceController::class, 'index']);
+    Route::get('/services/options', [ServiceController::class, 'options']);
+    Route::get('/services/{service}', [ServiceController::class, 'show']);
+    Route::post('/services', [ServiceController::class, 'store']);
+    Route::put('/services/{service}', [ServiceController::class, 'update']);
+    Route::delete('/services', [ServiceController::class, 'bulkDestroy']);
+    Route::delete('/services/{service}', [ServiceController::class, 'destroy']);
 
     Route::post('/orders', [OrderController::class, 'store'])
         ->middleware('can:create,App\Models\Order');

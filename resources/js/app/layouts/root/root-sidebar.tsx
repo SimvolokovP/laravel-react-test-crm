@@ -31,6 +31,7 @@ import {
 } from '@/shared/components/ui/alert-dialog';
 
 import { Button } from '@/shared/components/ui/button';
+import { Wrench } from 'lucide-react';
 
 import { useAuth } from '@/features/auth/hooks/use-auth';
 import { useLogout } from '@/features/auth/hooks/use-logout';
@@ -55,6 +56,7 @@ export function RootSidebar() {
     ...(!isAdmin ? [{ title: 'Личный кабинет', url: PAGES.PROFILE, icon: UserRound }] : []),
     { title: 'Заказы', url: isAdmin ? PAGES.ADMIN_ORDERS : PAGES.ORDERS, icon: ClipboardList },
     ...(isAdmin ? [{ title: 'Клиенты', url: PAGES.CLIENTS, icon: UsersRound }] : []),
+    ...(isAdmin ? [{ title: 'Услуги', url: PAGES.SERVICES, icon: Wrench }] : []),
   ];
 
   const initials =

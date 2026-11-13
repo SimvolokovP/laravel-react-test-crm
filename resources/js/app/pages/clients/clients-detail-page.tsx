@@ -25,6 +25,7 @@ export function ClientsDetailPage() {
         </Button>
       </div>
     );
+
   if (isPending)
     return (
       <div role="status" aria-label="Загрузка клиента" className="space-y-4 p-4">
@@ -48,6 +49,7 @@ export function ClientsDetailPage() {
         <Skeleton className="h-64 w-full" />
       </div>
     );
+
   if (isError || !client) {
     const status = error instanceof AxiosError ? error.response?.status : undefined;
     return (
@@ -68,6 +70,7 @@ export function ClientsDetailPage() {
       </div>
     );
   }
+
   return (
     <div className="flex flex-col gap-2 p-4 md:gap-4">
       <div className="flex items-center gap-3">

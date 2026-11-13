@@ -7,6 +7,16 @@ interface PageBreadcrumb {
 }
 
 export function getPageBreadcrumbs(pathname: string): PageBreadcrumb[] {
+  if (matchPath(PAGES.SERVICE_CREATE, pathname)) {
+    return [{ label: 'Услуги', href: PAGES.SERVICES }, { label: 'Новая услуга' }];
+  }
+  const serviceEdit = matchPath(PAGES.SERVICE_EDIT(':id'), pathname);
+  if (serviceEdit?.params.id) {
+    return [
+      { label: 'Услуги', href: PAGES.SERVICES },
+      { label: `Редактирование услуги №${serviceEdit.params.id}` },
+    ];
+  }
   if (matchPath(PAGES.CLIENT_CREATE, pathname)) {
     return [{ label: 'Клиенты', href: PAGES.CLIENTS }, { label: 'Новый клиент' }];
   }
@@ -41,6 +51,7 @@ export function getPageBreadcrumbs(pathname: string): PageBreadcrumb[] {
   }
 
   const pages = [
+    { path: PAGES.SERVICES, label: 'Услуги' },
     { path: PAGES.ORDERS, label: 'Заказы' },
     { path: PAGES.ADMIN_ORDERS, label: 'Заказы' },
     { path: PAGES.CLIENTS, label: 'Клиенты' },

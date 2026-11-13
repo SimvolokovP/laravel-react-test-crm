@@ -7,6 +7,8 @@ import { ProfilePage } from '@/pages/profile/profile-page';
 import { ClientsIndexPage } from '@/pages/clients/clients-index-page';
 import { ClientsDetailPage } from '@/pages/clients/clients-detail-page';
 import { ClientsFormPage } from '@/pages/clients/clients-form-page';
+import { ServicesIndexPage } from '@/pages/services/services-index-page';
+import { ServicesFormPage } from '@/pages/services/services-form-page';
 import { PAGES } from '@/shared/config/pages-url.config';
 import { OrdersFormPage } from '@/pages/orders/orders-form-page';
 import { OrdersDetailPage } from '@/pages/orders/orders-detail-page';
@@ -28,6 +30,9 @@ export function Router() {
             <Route element={<ProtectedRoute roles={['admin']} />}>
               <Route path={PAGES.ORDER_EDIT(':id')} element={<OrdersFormPage />} />
               <Route path={PAGES.CLIENTS} element={<ClientsIndexPage />} />
+              <Route path={PAGES.SERVICES} element={<ServicesIndexPage />} />
+              <Route path={PAGES.SERVICE_CREATE} element={<ServicesFormPage />} />
+              <Route path={PAGES.SERVICE_EDIT(':id')} element={<ServicesFormPage />} />
               <Route path={PAGES.CLIENT_CREATE} element={<ClientsFormPage />} />
               <Route path={PAGES.CLIENT_EDIT(':id')} element={<ClientsFormPage />} />
               <Route path={PAGES.CLIENT_DETAIL(':id')} element={<ClientsDetailPage />} />

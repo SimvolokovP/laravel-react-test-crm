@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 
 export function useGetServices() {
   return useQuery({
-    queryKey: ['services'],
+    queryKey: ['services', 'options'],
     queryFn: ordersService.getServices,
   });
 }
