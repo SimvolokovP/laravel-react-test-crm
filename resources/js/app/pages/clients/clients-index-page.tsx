@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Plus } from 'lucide-react';
+import { Plus, Pencil } from 'lucide-react';
 import { useState } from 'react';
 import { ArrowUp, ArrowDown, ArrowUpDown, Search } from 'lucide-react';
 import { useGetClients } from '@/features/clients/hooks/use-get-clients';
@@ -116,6 +116,7 @@ export function ClientsIndexPage() {
                   </Button>
                 </TableHead>
               ))}
+              <TableHead className="px-5 py-3 text-right">Действия</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -127,11 +128,14 @@ export function ClientsIndexPage() {
                       <Skeleton className="h-5 w-full max-w-40" />
                     </TableCell>
                   ))}
+                  <TableCell className="px-5 py-4">
+                    <Skeleton className="ml-auto h-8 w-9" />
+                  </TableCell>
                 </TableRow>
               ))
             ) : isError ? (
               <TableRow>
-                <TableCell colSpan={4} className="h-32 text-center">
+                <TableCell colSpan={5} className="h-32 text-center">
                   <p role="alert" className="mb-3 text-sm text-destructive">
                     Не удалось загрузить клиентов
                   </p>
@@ -142,7 +146,7 @@ export function ClientsIndexPage() {
               </TableRow>
             ) : clients.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={4} className="h-32 text-center text-muted-foreground">
+                <TableCell colSpan={5} className="h-32 text-center text-muted-foreground">
                   {debouncedSearch ? 'Клиенты по вашему запросу не найдены' : 'Клиентов пока нет'}
                 </TableCell>
               </TableRow>
@@ -177,6 +181,19 @@ export function ClientsIndexPage() {
                     {client.created_at
                       ? new Date(client.created_at).toLocaleDateString('ru-RU')
                       : '—'}
+                  </TableCell>
+                  <TableCell
+                    className="px-5 py-4 text-right"
+                    onClick={(event) => event.stopPropagation()}
+                  >
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      render={<Link to={PAGES.CLIENT_EDIT(client.id)} />}
+                      aria-label={`Редактировать клиента ${client.name}`}
+                    >
+                      <Pencil className="size-4" />
+                    </Button>
                   </TableCell>
                 </TableRow>
               ))
