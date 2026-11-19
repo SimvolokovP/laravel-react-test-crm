@@ -1,5 +1,3 @@
-'use client';
-
 import { PropsWithChildren } from 'react';
 import { QueryClientAppProvider } from './query-client-app-provider';
 
