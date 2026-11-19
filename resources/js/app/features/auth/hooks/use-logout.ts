@@ -2,6 +2,7 @@ import { authApi } from '@/features/auth/service/auth.service';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { errorCatch } from '@/shared/api/api.config';
+
 interface UseLogoutProps {
   onSuccess?: (data: void) => void | Promise<void>;
   onError?: (message: string) => void;

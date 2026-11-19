@@ -2,10 +2,12 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ordersService } from '@/features/orders/services/orders.service';
 
 import { errorCatch } from '@/shared/api/api.config';
+
 interface UseDeleteOrderProps {
   onSuccess?: (data: void) => void | Promise<void>;
   onError?: (message: string) => void;
 }
+
 export function useDeleteOrder({ onSuccess, onError }: UseDeleteOrderProps = {}) {
   const queryClient = useQueryClient();
   return useMutation({
